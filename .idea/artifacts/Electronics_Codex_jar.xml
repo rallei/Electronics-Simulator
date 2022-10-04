@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Electronics Codex:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Electronics_Codex_jar</output-path>
+    <root id="archive" name="Electronics Codex.jar">
+      <element id="module-output" name="Electronics-Simulator" />
+    </root>
+  </artifact>
+</component>
