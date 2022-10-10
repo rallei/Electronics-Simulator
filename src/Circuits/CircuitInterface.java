@@ -18,14 +18,14 @@ public interface CircuitInterface {
      *
      * @return Returns true if component was added, false if the component could not be added
      */
-    public Boolean AddNode(Node n);
+    //public Boolean AddNode(Node n);
 
 
     /**
      *
      * @return Returns true if component was removed, false if the component could not be removed
      */
-    public Boolean RemoveNode(Node n);
+    //public Boolean RemoveNode(Node n);
 
     /**
      *

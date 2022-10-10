@@ -4,22 +4,19 @@ import Units.Electrical.Properties.Resistance;
 import Units.Metric.Magnitude;
 import Units.Metric.StandardNum;
 
-public class Resistor extends Component implements VisualComponentInterface {
+public class Wire extends Component implements VisualComponentInterface {
 
     public Resistance resistance;
 
-    // standard connection is top-> bottom
     public ComponentPlacementPoints[] getDefaultConnectionPoints(){
 
         return new ComponentPlacementPoints[]{
-                ComponentPlacementPoints.TOP,
-                ComponentPlacementPoints.BOTTOM
+                ComponentPlacementPoints.TOP
         };
     }
 
-    public Resistor(StandardNum _resistance){
-        resistance = new Resistance(_resistance);
-
-
+    public Wire(){
+        // default value of 0 Ohms -- an 'ideal' wire
+        resistance = new Resistance(new StandardNum(0, Magnitude.NONE));
     }
 }

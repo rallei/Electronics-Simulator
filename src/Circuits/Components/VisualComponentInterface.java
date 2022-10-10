@@ -1,6 +1,9 @@
 package Circuits.Components;
 
-public interface ComponentInterface {
+import javax.swing.*;
+import java.awt.*;
+
+public interface VisualComponentInterface {
     /*
      * what do our components do?
      * take in some quantity of voltage or current... current is based on the voltage supplied divided by total resistance for instance.
@@ -8,5 +11,7 @@ public interface ComponentInterface {
      *
      */
 
-    public ComponentType componentType = null;
+    //public ComponentType componentType = null;
+
+    public ComponentPlacementPoints[] getDefaultConnectionPoints();
 }

@@ -1,7 +1,5 @@
 import Circuits.Circuit;
-import Circuits.Components.Component;
-import Circuits.Components.Resistor;
-import Circuits.Components.VoltageSource;
+import Circuits.Components.*;
 import Circuits.MainFrame;
 import Circuits.Node;
 import Units.Electrical.Properties.Current;
@@ -64,7 +62,7 @@ public class MainInterface {
         //node building test
         System.out.println("This is a test.");
 
-        MainFrame myFrame = new MainFrame();
+        CircuitBuilder circuitBuilder = new CircuitBuilder();
         //Node n = new Node();
         //n.BuildNode();
         //AddThenDoRunnable(5,10,()-> { System.out.println("Hey there, this is the runnable! As you can see... I'm running! :)");});

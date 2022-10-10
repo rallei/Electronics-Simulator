@@ -44,77 +44,14 @@ public class Circuit implements CircuitInterface {
      * Pretty sure we need a pathfinding algorithm for both of these (and perhaps no matter what we do)
      */
 
-    private Node circuit;
-    
-    public Boolean AddNode(Node n){
-        if(circuit != null) {
-            //circuit.nextNode = n;
+    Component[] components;
 
-            return true;
-        }
-        else{
-            circuit = n;
-        }
+    public Boolean addComponent(Component c){
         return false;
     }
-    
-    public Boolean RemoveNode(Node n){
-        // implement later
-        return false;
+
+    public Component getComponent(String id){
+        // code to search components for a component with a matching ID - if such a thing proves necessary
+        return null;
     }
-    /*
-    public void BuildCircuit(){
-        
-        Node lastNode = circuit.nextNode;
-        
-        // look for the last node in the circuit
-        while(lastNode.nextNode != null) {
-            lastNode = lastNode.nextNode;
-        }
-        
-        // then connect it to the first node to complete the circuit!
-        lastNode.nextNode = circuit.previousNode;
-    }
-    
-    public void PrintCircuitInfo(){
-        // initialize starting values...
-        double r = 0;
-        double v = 0;
-
-
-        Node startNode = circuit;
-        Node currentNode = startNode;
-        int counter = 0;
-        // then take a walk around the circuit to total everything up
-        while(currentNode != null && currentNode != startNode | counter == 0){
-            // implementing foreach loop, documentation used: (https://www.geeksforgeeks.org/for-each-loop-in-java/)
-            for (Component c : currentNode.components)
-            {
-                // implementing switch block, documentation used: (https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html, https://stackoverflow.com/questions/5579309/is-it-possible-to-use-the-instanceof-operator-in-a-switch-statement)
-
-                if(c instanceof Resistor){
-                    Resistor resistor = (Resistor) c;
-                    r += resistor.resistance.GetValue();
-
-                } else if (c instanceof VoltageSource) {
-                    VoltageSource voltageSource = (VoltageSource) c;
-                    v += voltageSource.GetVoltage();
-
-                }
-            }
-            counter++;
-            currentNode = currentNode.nextNode;
-            //after simple checks (that the nodes work and all), we can create groupings to determine V, R, I, accounting for whether components are in series or parallel
-
-
-            //Voltage V = new Voltage(v, Magnitude.none);
-            //Resistance R = new Resistance(r, Magnitude.none);
-            //Current I = new Current(0,Magnitude.none);
-        }
-
-
-        System.out.println("Total voltage IN: " + v);
-        System.out.println("Total resistance values within circuit: " + r);
-    }
-    */
 }

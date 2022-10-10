@@ -1,11 +1,20 @@
 package Circuits.Components;
 import Units.Electrical.Properties.*;
+import Units.Metric.StandardNum;
 
 public class VoltageSource extends Component {
-     private Voltage voltageRating;
+     private StandardNum voltageRating;
 
      private Boolean isOn = true;
 
+    // standard connection is top-> bottom
+    public ComponentPlacementPoints[] getDefaultConnectionPoints(){
+
+        return new ComponentPlacementPoints[]{
+                ComponentPlacementPoints.TOP,
+                ComponentPlacementPoints.BOTTOM
+        };
+    }
 
     public double GetVoltage(){
         if(!isOn)
@@ -23,7 +32,7 @@ public class VoltageSource extends Component {
         }
     }
 
-    public VoltageSource(Voltage rating){
+    public VoltageSource(StandardNum rating){
         voltageRating = rating;
     }
 }
