@@ -23,7 +23,7 @@ public abstract class Component implements VisualComponentInterface{
     *
     *
     * */
-
+    //TODO: rewrite image getting code to ignore rotation and instead use componentconnections
     private BufferedImage GetBufferedImage(){
         //System.out.println("I want to get the image at " + this.getClass().getSimpleName() + ".png");
 
@@ -33,45 +33,42 @@ public abstract class Component implements VisualComponentInterface{
         return i;
     }
 
-    public BufferedImage GetWhatIfImage(int rotation){
+    public BufferedImage GetWhatIfImage(Rotation rotation){
         // imagine yourself + a new addition
         BufferedImage base = GetImage();
         if(base != null)
-            return GetMergedImage(base,GetRotatedImage(GetBufferedImage(),Double.valueOf(rotation)));
+            return GetMergedImage(base,GetRotatedImage(GetBufferedImage(), (double) rotation.GetValue()));
         else
-            return GetRotatedImage(GetBufferedImage(),Double.valueOf(rotation));
+            return GetRotatedImage(GetBufferedImage(), (double) rotation.GetValue());
     }
 
+    private BufferedImage AddToImage(BufferedImage base, BufferedImage addition){
+        if(base == null)
+            return addition;
+
+        return GetMergedImage(base,addition);
+    }
     public BufferedImage GetImage() {
         BufferedImage componentImage = GetBufferedImage();
-        ComponentPlacementPoints[] defaultPoints = getDefaultConnectionPoints();
-        //int maxComponents = activeConnectionPoints.length / defaultPoints.length; // 2 for a resistor, 4 for a wire.
-        if(this.getClass().equals(Wire.class)){
-            // then for each connection point, add & merge
-            BufferedImage base = null;
-            for(int i = 0; i < 4; i++){
-                if(CheckIsPlaced(defaultPoints,i)){
-                    if(base == null)
-                        base = GetRotatedImage(componentImage, Double.valueOf(i));
-                    else{
-                        // add to what already exists
-                        base = GetMergedImage(base,GetRotatedImage(componentImage,Double.valueOf(i)));
-                    }
-                }
-            }
-            return base;
-        }
-        else{
-            // just return the image with its rotation
-            for(int i = 0; i < 4; i++){
-                if(CheckIsPlaced(defaultPoints,i)){
-                    return GetRotatedImage(componentImage, Double.valueOf(i));
-                }
-            }
-        }
+
+        if(mainPivot >= 0)
+            return GetRotatedImage(GetBufferedImage(),mainPivot);
+
+        BufferedImage base = null;
+        if(connections.top.isConnected)
+            base = AddToImage(base,GetRotatedImage(GetBufferedImage(),connections.top.point.GetValue()));
+
+        if(connections.right.isConnected)
+            base = AddToImage(base,GetRotatedImage(GetBufferedImage(),connections.right.point.GetValue()));
+
+        if(connections.bot.isConnected)
+            base = AddToImage(base,GetRotatedImage(GetBufferedImage(),connections.bot.point.GetValue()));
+
+        if(connections.left.isConnected)
+            base = AddToImage(base,GetRotatedImage(GetBufferedImage(),connections.left.point.GetValue()));
 
         // if all has failed... let it explode
-        return null;
+        return base;
 
         /*
          * how to go about this?
@@ -80,65 +77,34 @@ public abstract class Component implements VisualComponentInterface{
          */
     }
 
-    /*
-     * thoughts for component use in our GUI:
-     * wires can connect IN at any of four points. there is no point to make a distinction between IN and OUT.
-     * a 1k Ohm resistor whose IN terminal is at the bottom and whose OUT terminal is at the top will function the same if those are reversed
-     * that resistor will have 1k Ohms of resistance regardless of the direction of the current flowing through it.
-     *
-     * it makes more sense (and simplifies things) to say that the resistor simply exists from the bottom to top
-     * (or left to right side) of the tile in the grid layout (breadboard) where it exists.
-     *
-     */
+    private int mainPivot = -1; // 0 = top to bot; 2 = bot to top; 1 = right to left; 3 = left to right
 
-    //public int rotation = 0; // a number between 0-3 representing the rotation of the whole component
-
-    private Boolean[] activeConnectionPoints = new Boolean[]{ false, false, false, false }; // points at which the component 'exists'
-
+    public int Direction(){
+        return mainPivot;
+    }
+    // debugging notes: enum types in java cannot be instantiated (instanced). If i set enum values to true somewhere, i set them true for everywhere.
+    public ComponentConnections connections = new ComponentConnections(false, false, false, false);
     public void ClearActiveConnections(){
-        for(Boolean connectionPoint: activeConnectionPoints)
-            connectionPoint = false;
+        connections.Clear();
     }
 
-    public void PlaceComponent(int rotation, Runnable onSuccess, Runnable onFail){
-        //sets that the component exists at specified rotation
-        SetPlacementPoints(getDefaultConnectionPoints(),rotation, onSuccess, onFail);
-    }
+    public Point position;
 
-    public void SetPlacementPoints(ComponentPlacementPoints[] points, int rotation, Runnable onSuccess, Runnable onFail){
-        if(!CheckCanPlace(points,rotation))
+    public void PlaceComponent(Rotation rotation, Point position, Runnable onSuccess, Runnable onFail){
+        if(!connections.Add(getConnectionPoints(),rotation))
         {
             onFail.run();
             return;
         }
-        for(ComponentPlacementPoints point: points) {
-            System.out.println("I'm in ur kitchen, settin ur stuff to true");
-            activeConnectionPoints[(point.direction + rotation) % NUM_DIRECTIONS] = true;
+
+        // TODO: the below code limits to one placed component and sets pivot to the clicked location (e.g. if clicked at top, it's facing top). idk... it's a little bit of a messy way to do this but we are only going to want one component per grid unit (except for wires... for now)
+        if(!(this instanceof Wire)) {
+            //connections.Clear();
+            mainPivot = rotation.GetValue();
         }
+        this.position = position;
         onSuccess.run();
     }
-
-    public Boolean CheckCanPlace(ComponentPlacementPoints[] points, int rotation){
-        for(ComponentPlacementPoints point: points) {
-            if(activeConnectionPoints[(point.direction + rotation) % NUM_DIRECTIONS] == true) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public Boolean CheckIsPlaced(ComponentPlacementPoints[] points, int rotation){
-        for(ComponentPlacementPoints point: points) {
-            if(activeConnectionPoints[(point.direction + rotation) % NUM_DIRECTIONS] == false) {
-
-                return false;
-            }
-        }
-        return true;
-    }
-
-    Component[] componentIn;
-    Component[] componentOut;
 
     // for example A1, F7, etc.
     char namedVariable;

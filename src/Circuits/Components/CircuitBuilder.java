@@ -79,7 +79,7 @@ public class CircuitBuilder extends JFrame {
         analyzeCircuit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                breadboard.getGrid();
+                breadboard.AnalyzeCircuit();
             }
         });
     }

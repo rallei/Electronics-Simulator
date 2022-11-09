@@ -9,12 +9,8 @@ public class Resistor extends Component implements VisualComponentInterface {
     public Resistance resistance;
 
     // standard connection is top-> bottom
-    public ComponentPlacementPoints[] getDefaultConnectionPoints(){
-
-        return new ComponentPlacementPoints[]{
-                ComponentPlacementPoints.TOP,
-                ComponentPlacementPoints.BOTTOM
-        };
+    public int[] getConnectionPoints(){
+        return new int[]{0,2};
     }
 
     public Resistor(StandardNum _resistance){

@@ -13,5 +13,5 @@ public interface VisualComponentInterface {
 
     //public ComponentType componentType = null;
 
-    public ComponentPlacementPoints[] getDefaultConnectionPoints();
+    public int[] getConnectionPoints();
 }

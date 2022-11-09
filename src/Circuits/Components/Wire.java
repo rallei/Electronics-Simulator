@@ -8,11 +8,8 @@ public class Wire extends Component implements VisualComponentInterface {
 
     public Resistance resistance;
 
-    public ComponentPlacementPoints[] getDefaultConnectionPoints(){
-
-        return new ComponentPlacementPoints[]{
-                ComponentPlacementPoints.TOP
-        };
+    public int[] getConnectionPoints(){
+        return new int[]{0};
     }
 
     public Wire(){

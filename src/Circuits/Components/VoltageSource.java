@@ -8,12 +8,8 @@ public class VoltageSource extends Component {
      private Boolean isOn = true;
 
     // standard connection is top-> bottom
-    public ComponentPlacementPoints[] getDefaultConnectionPoints(){
-
-        return new ComponentPlacementPoints[]{
-                ComponentPlacementPoints.TOP,
-                ComponentPlacementPoints.BOTTOM
-        };
+    public int[] getConnectionPoints(){
+        return new int[]{0,2};
     }
 
     public double GetVoltage(){

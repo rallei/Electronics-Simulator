@@ -76,6 +76,7 @@ public class Misc {
     }
 
     public static BufferedImage GetRotatedImage(BufferedImage img, double rotation){
+
         int width = img.getWidth();
         int height = img.getHeight();
 
