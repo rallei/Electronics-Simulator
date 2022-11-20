@@ -2,10 +2,8 @@ package Circuits;
 
 import Circuits.Components.Component;
 import Circuits.Components.Resistor;
-import Units.Metric.Magnitude;
 import Units.Metric.StandardNum;
 
-import java.security.KeyPair;
 import java.util.*;
 
 import static Extensions.HelperMethods.Metric.ParseStandardNum;

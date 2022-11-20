@@ -23,4 +23,8 @@ public class Resistance extends Quantity {
         super(initialValue, initialMagnitude);
     }
     public Resistance(StandardNum value) { super(value);}
+
+    public Resistance(){
+
+    }
 }

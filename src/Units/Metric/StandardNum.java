@@ -17,5 +17,8 @@ public class StandardNum {
         mantissa = _mantissa;
         exponent = _exponent;
     }
+    public StandardNum(){
+
+    }
     //TODO: methods for addition, substraction, division, multiplication can all be handled by class StandardNum (out with the old quantity system)
 }

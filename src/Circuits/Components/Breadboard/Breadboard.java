@@ -6,12 +6,23 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
+import Circuits.Circuit;
 import Circuits.Components.*;
 import Circuits.Components.Component;
 import Extensions.ReschedulableTimer;
 import Units.Metric.StandardNum;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class Breadboard {
 
@@ -24,19 +35,21 @@ public class Breadboard {
     private BreadboardGridUnit[][] mainGrid;
 
     private static Component selectedComponent;
-    public static void SetSelectedComponent(Component c){
+
+    public static void SetSelectedComponent(Component c) {
         selectedComponent = c;
     }
-    public static Component GetSelectedComponent(){
+
+    public static Component GetSelectedComponent() {
         // make new instance of selected comp
         //TODO: improve this from a rote, crappy switch block when I get a better idea
-        if(selectedComponent instanceof Wire) return new Wire();
-        if(selectedComponent instanceof VoltageSource) return new VoltageSource(GetComponentValue());
-        if(selectedComponent instanceof Resistor) return new Resistor(GetComponentValue());
+        if (selectedComponent instanceof Wire) return new Wire();
+        if (selectedComponent instanceof VoltageSource) return new VoltageSource(GetComponentValue());
+        if (selectedComponent instanceof Resistor) return new Resistor(GetComponentValue());
         return null;
     }
 
-    private static StandardNum GetComponentValue(){
+    private static StandardNum GetComponentValue() {
         // for now... default?
         return null;
     }
@@ -46,16 +59,15 @@ public class Breadboard {
     private long statusKeepAlive = 2000;
     ReschedulableTimer timer = new ReschedulableTimer();
 
-    public void UpdateStatus(String newStatus){
+    public void UpdateStatus(String newStatus) {
         status = newStatus;
         statusArea.setText(status);
 
 
-        if(timer.isRunning){
+        if (timer.isRunning) {
             timer.reschedule(statusKeepAlive);
-        }
-        else
-            timer.schedule(()-> {
+        } else
+            timer.schedule(() -> {
                 UpdateStatus("");
             }, statusKeepAlive);
 
@@ -64,7 +76,7 @@ public class Breadboard {
     public JTextArea statusArea;
 
     //endregion
-    public void createGrid(JPanel panel, int width, int height){
+    public void createGrid(JPanel panel, int width, int height) {
         this.panel = panel;
         this.height = height;
         this.width = width;
@@ -75,9 +87,9 @@ public class Breadboard {
 
         panel.setLayout(g);
 
-        for(int i = 0; i < height; i++){
-            for(int k = 0; k < width; k++) {
-                BreadboardGridUnit gridUnit = new BreadboardGridUnit(new Point(i,k));
+        for (int i = 0; i < height; i++) {
+            for (int k = 0; k < width; k++) {
+                BreadboardGridUnit gridUnit = new BreadboardGridUnit(new Point(i, k));
                 gridUnit.addMouseListener(new ClickListener(gridUnit));
                 panel.add(gridUnit);
             }
@@ -86,8 +98,108 @@ public class Breadboard {
         mainGrid = getGrid(); // it's kinda dumb to do it this way but we can fix this later
     }
 
+    public static class ClassedComponent{
+
+        //ugly and hacked together, i'll admit. in C# I would be saving and loading with reflection, which I know Java has but...
+        public Wire wireData;
+        public VoltageSource voltageData;
+        public Resistor resistorData;
+        public String componentType;
+
+        public ClassedComponent(){
+            wireData = null;
+            voltageData = null;
+            resistorData = null;
+            componentType = null;
+        }
+
+    }
+
+    String saveFileName = "circuit.save";
+    public void SaveCircuit(){
+        // probably use json or something to save our grid matrix to file
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        try {
+
+            ClassedComponent[][] data = new ClassedComponent[mainGrid.length][mainGrid[0].length];// Map<Component,String>[mainGrid.length][mainGrid[0].length];
+            for(int i = 0; i < mainGrid.length; i++)
+                for(int k = 0; k < mainGrid[i].length; k++) {
+                    data[i][k] = new ClassedComponent();
+                    var unit = mainGrid[i][k];
+                    if(unit.component instanceof Wire){
+                        data[i][k].wireData = (Wire)unit.component;
+                    } else
+                    if(unit.component instanceof VoltageSource) {
+                        data[i][k].voltageData = (VoltageSource)unit.component;
+                    } else
+                    if(unit.component instanceof Resistor){
+                        data[i][k].resistorData = (Resistor)unit.component;
+                    }
+                }
+
+
+            String jsonResult = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(data);
+            /*
+            for(int i = 0; i < mainGrid.length; i++)
+                for(int k = 0; k < mainGrid[i].length; k++)
+                    if (mainGrid[i][k].component != null)
+                        System.out.println("Component at (" + i + "," + k + ")");
+
+             */
+            try{
+                BufferedWriter writer = new BufferedWriter(new FileWriter(saveFileName));
+                writer.write(jsonResult);
+                writer.close();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void LoadCircuit(){
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(saveFileName));
+            String json = reader.lines().collect(Collectors.joining()); // this is lovely
+            reader.close();
+            try{
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+
+
+                TypeReference<ClassedComponent[][]> typeRef = new TypeReference<>() {
+                };
+
+                ClassedComponent[][] data = objectMapper.readValue(json,typeRef);
+
+                for(int i = 0; i < mainGrid.length; i++)
+                    for(int k = 0; k < mainGrid[i].length; k++)
+                    {
+                        //System.out.println(data[i][k] instanceof Wire);
+                        if(data[i][k].wireData != null)
+                            mainGrid[i][k].RestoreFromSave(data[i][k].wireData);
+                        else
+                        if(data[i][k].voltageData != null)
+                            mainGrid[i][k].RestoreFromSave(data[i][k].voltageData);
+                        else
+                        if(data[i][k].resistorData != null)
+                            mainGrid[i][k].RestoreFromSave(data[i][k].resistorData);
+                    }
+            }
+            catch (JsonProcessingException e){
+                e.printStackTrace();
+            }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     //region:Circuit Analysis
-    public void AnalyzeCircuit(){
+    public void AnalyzeCircuit() {
         BreadboardGridUnit[][] grid = getGrid();
         Point startPoint = FindStartPoint(grid);
         //System.out.println(startPoint);
@@ -96,20 +208,20 @@ public class Breadboard {
         //grid[startPoint.x][startPoint.y].component.connections.PrintActiveConnections();
         //GetNode(GetComponentAtPoint(startPoint),null,0,null);
         //FindPath(grid, startPoint, null,Rotation.TOP, new Stack<>());
-        SolveCircuit(null,startPoint,initializeVisitedArray(), new LinkedList<Point>());
+        //SolveCircuit(null, startPoint, initializeVisitedArray(), new LinkedList<Point>());
     }
 
-    public BreadboardGridUnit[][] getGrid(){
+    public BreadboardGridUnit[][] getGrid() {
         int counter = 0;
         BreadboardGridUnit[][] breadboardGridUnits = new BreadboardGridUnit[width][height];
 
-        for(java.awt.Component c : panel.getComponents()){
-        // just need to put it in our grid!
-            BreadboardGridUnit gridUnit = (BreadboardGridUnit)c;
+        for (java.awt.Component c : panel.getComponents()) {
+            // just need to put it in our grid!
+            BreadboardGridUnit gridUnit = (BreadboardGridUnit) c;
             int x = counter % width;
             int y = counter / width;
             breadboardGridUnits[x][y] = gridUnit;
-            if(gridUnit.component != null){
+            if (gridUnit.component != null) {
                 //System.out.println("Found component of type " + gridUnit.component.toString() + " at coordinate (" + x + ", " + y + ").");
 
             }
@@ -119,29 +231,35 @@ public class Breadboard {
         return breadboardGridUnits;
     }
 
-    public Point FindStartPoint(BreadboardGridUnit[][] matrix){
+    public Point FindStartPoint(BreadboardGridUnit[][] matrix) {
         // iterate over array and find voltage source, return that as start
-        for(int i = 0; i < matrix.length; i++)
-            for(int k = 0; k < matrix[i].length; k++)
-                if(matrix[i][k].component instanceof VoltageSource) {
+        for (int i = 0; i < matrix.length; i++)
+            for (int k = 0; k < matrix[i].length; k++)
+                if (matrix[i][k].component instanceof VoltageSource) {
                     return new Point(i, k);
                 }
         return null;
     }
 
 
-    private Boolean AlreadyVisited(Point point, Stack<Point> points){
+    private Boolean AlreadyVisited(Point point, Stack<Point> points) {
         return points.contains(point);
     }
 
-    private Boolean IsJunction(ComponentConnections connections){
+    private Boolean IsJunction(ComponentConnections connections) {
         int counter = 0;
         int junctionThreshold = 3;
-        for(ComponentConnections.ConnectionPoint point : connections.points){
-            if(point.isConnected)
+        for (ComponentConnections.ConnectionPoint point : connections.points) {
+            if (point.isConnected)
                 counter++;
         }
         return counter >= junctionThreshold;
+    }
+
+    //overloading the method for readability
+
+    private Boolean IsJunction(Component component) {
+        return IsJunction(component.connections);
     }
 
     /*
@@ -154,14 +272,14 @@ public class Breadboard {
     // some constants for visited array initialization and checking
     final int unvisited = -1;
     final int inaccessible = -2;
-    int[][] initializeVisitedArray(){
+
+    int[][] initializeVisitedArray() {
         int[][] visitedArray = new int[mainGrid.length][mainGrid[0].length];
-        for(int i = 0; i < visitedArray.length; i++)
-            for(int j = 0; j < visitedArray[i].length; j++) {
-                if(mainGrid[i][j].component != null) {
+        for (int i = 0; i < visitedArray.length; i++)
+            for (int j = 0; j < visitedArray[i].length; j++) {
+                if (mainGrid[i][j].component != null) {
                     visitedArray[i][j] = unvisited;
-                }
-                else {
+                } else {
                     visitedArray[i][j] = inaccessible;
 
                 }
@@ -169,29 +287,26 @@ public class Breadboard {
         return visitedArray;
     }
 
-    void PrintArray(int[][] array){
+    void PrintArray(int[][] array) {
 
-        for(int i = 0; i < array[0].length; i++)
-        {
+        for (int i = 0; i < array[0].length; i++) {
 
             System.out.println(); // spacing line
-            for(int j = 0; j < array.length; j++){
+            for (int j = 0; j < array.length; j++) {
 
                 // feeling lazy and just want to see this work, brute force time
                 String spacing = "";
-                if(array[j][i] < 0)
+                if (array[j][i] < 0)
                     spacing = "  ";
                 else if (array[j][i] >= 0 && array[j][i] < 10) {
                     spacing = "  ";
-                }
-                else if(array[j][i] >= 10 && array[j][i] < 100){
+                } else if (array[j][i] >= 10 && array[j][i] < 100) {
                     spacing = " ";
-                }
-                else{
+                } else {
                     spacing = "";
                 }
 
-                if(array[j][i] < 0)
+                if (array[j][i] < 0)
                     System.out.print(spacing + "X");
                 else
                     System.out.print(spacing + array[j][i]);
@@ -199,7 +314,53 @@ public class Breadboard {
         }
     }
 
-    public void SolveCircuit(Point lastPosition, Point currentPosition, int[][]visited, Queue<Point> queue){
+    public void SolveCircuit(Component component) {
+        /* It may be that this is simply a refinement of other ideas I have had, but I will still give this method its own space.
+         *
+         */
+
+        // intended to store objects of type component and type node, from which we can grab values such as resistance, etc.
+        // the list represents a complete ordering of the circuit
+        LinkedList<Object> OrderedList = new LinkedList<>();
+
+        Component nextComponent = NextInPath(null,null);
+
+        if (IsJunction(nextComponent)) {
+
+            Node nextNode = GetNode();
+
+            if (nextNode != null) {
+                OrderedList.add(nextNode);
+                // set nextComponent to the endpoint of the node we found
+                nextComponent = nextNode.endComponent;
+            } else {
+                System.out.println("I hit a junction on the main path, but it wasn't a node... I'm not sure what to do!");
+                return;
+            }
+        } else {
+            OrderedList.add(nextComponent);
+        }
+
+        //SolveCircuit(NextInPath(nextComponent));
+    }
+
+    public Component NextInPath(Point fromPosition, int[][] visited) {
+        // code to determine what comes next in the path
+        // get all points within reach of the current position
+        ArrayList<Point> reachablePoints = ReachablePoints(fromPosition, visited);
+
+        //reachablePoints.get(0)
+        return GetComponentAtPoint(reachablePoints.get(0));
+    }
+
+
+    public Node GetNode() {
+
+
+        return null;
+    }
+
+    public void SolveCircuit2(Point lastPosition, Point currentPosition, int[][]visited, Queue<Point> queue){
         /*
          * Here's to another idea to test..!
          *
@@ -259,7 +420,7 @@ public class Breadboard {
 
         // set last to current
         lastPosition = currentPosition;
-        SolveCircuit(lastPosition,nextPoint,visited,queue);
+        //SolveCircuit(lastPosition,nextPoint,visited,queue);
 
     }
 
@@ -340,6 +501,7 @@ public class Breadboard {
         }
     }
 
+    /*
     public Node GetNode(Component startComponent, Component currentComponent, int junctionsSeen, Node node){
         // simply going to use a component.
 
@@ -363,7 +525,7 @@ public class Breadboard {
 
         return node;
     }
-
+    */
     public ArrayList<Object> GetPath(Component currentComponent, int junctionsIn, Rotation r, ArrayList<Object> path){
         // follow along path, can call getNode
         if(path == null) {
@@ -425,7 +587,7 @@ public class Breadboard {
                 // can we just call getnode here?
                 if(IsJunction(current.connections)) {
                     junctions.add(curPoint);
-                    GetNode(current,null,current.connections.GetNumConnections() -1, null);
+                    //GetNode(current,null,current.connections.GetNumConnections() -1, null);
                 }
 
                 for (ComponentConnections.ConnectionPoint point : current.connections.points) {
@@ -517,6 +679,25 @@ public class Breadboard {
     */
     public class BreadboardGridUnit extends JPanel {
 
+        /*
+        @JsonDeserialize(builder = Data.class)
+        @JsonPOJOBuilder(buildMethodName = "build", withPrefix = "set")
+        public class Data{
+            public Circuits.Components.Component component;
+
+            public Data build(){
+                return new Data();
+            }
+
+            public Data(Data data){
+                component = data.component;
+            }
+
+            public Data(){
+
+            }
+        }
+        */
 
         private static int size = 20;
         private Color backgroundColor;
@@ -548,7 +729,10 @@ public class Breadboard {
             }
         }
 
-
+        public void RestoreFromSave(Circuits.Components.Component c){
+            component = c;
+            SetImage(component.GetImage());
+        }
 
         public void SetComponent(Circuits.Components.Component c, Rotation rotation){
             if(c == null) {

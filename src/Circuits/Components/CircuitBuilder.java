@@ -23,6 +23,8 @@ public class CircuitBuilder extends JFrame {
     private JButton rotateLeftButton;
     private JButton rotateRightButton;
     private JTextArea outputTextGoesHereTextArea;
+    private JButton saveCircuit;
+    private JButton loadCircuit;
 
     private Breadboard breadboard = new Breadboard(outputTextGoesHereTextArea);
 
@@ -80,6 +82,18 @@ public class CircuitBuilder extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 breadboard.AnalyzeCircuit();
+            }
+        });
+        saveCircuit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                breadboard.SaveCircuit();
+            }
+        });
+        loadCircuit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                breadboard.LoadCircuit();
             }
         });
     }

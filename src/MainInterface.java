@@ -1,16 +1,6 @@
-import Circuits.Circuit;
 import Circuits.Components.*;
-import Circuits.MainFrame;
-import Circuits.Node;
-import Units.Electrical.Properties.Current;
-import Units.Electrical.Properties.Resistance;
-import Units.Electrical.Properties.Voltage;
-import Units.Metric.*;
 
-import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.LinkedList;
-import java.util.Scanner;
 
 public class MainInterface {
     public static void main(String[] args) {

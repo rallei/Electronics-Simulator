@@ -1,8 +1,4 @@
 package Circuits;
-import Circuits.Components.Component;
-import Units.Electrical.Properties.*;
-
-import java.util.LinkedList;
 
 public interface CircuitInterface {
     /*

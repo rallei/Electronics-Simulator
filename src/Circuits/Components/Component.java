@@ -1,17 +1,18 @@
 package Circuits.Components;
 
-import Extensions.RotatedIcon;
-
-import javax.swing.*;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Map;
 
-import static Extensions.Constants.NUM_DIRECTIONS;
 import static Extensions.HelperMethods.Misc.*;
 
 public abstract class Component implements VisualComponentInterface{
+
+    public static class ComponentData{
+        public String someData = "data";
+        //public ComponentConnections connections = new ComponentConnections(false, false, false, false);
+    }
+
+    public ComponentData data = new ComponentData();
 
     /*      next steps:
     *
@@ -117,5 +118,6 @@ public abstract class Component implements VisualComponentInterface{
     public String GetID(){ return namedVariable + Integer.toString(subscript); }
     public char GetIDVariable(){ return namedVariable; }
     public int GetIDSubscript(){ return subscript; }
+
 
 }

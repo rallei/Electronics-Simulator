@@ -1,7 +1,5 @@
 package Extensions.HelperMethods;
 
-import Units.Metric.Magnitude;
-
 public class Formatting {
 
     public static String BeautifyString(String s){

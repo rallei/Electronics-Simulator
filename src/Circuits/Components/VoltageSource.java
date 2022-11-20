@@ -1,12 +1,13 @@
 package Circuits.Components;
-import Units.Electrical.Properties.*;
 import Units.Metric.StandardNum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class VoltageSource extends Component {
      private StandardNum voltageRating;
 
      private Boolean isOn = true;
 
+     @JsonIgnore
     // standard connection is top-> bottom
     public int[] getConnectionPoints(){
         return new int[]{0,2};
@@ -30,5 +31,9 @@ public class VoltageSource extends Component {
 
     public VoltageSource(StandardNum rating){
         voltageRating = rating;
+    }
+
+    public VoltageSource(){
+
     }
 }

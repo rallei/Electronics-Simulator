@@ -2,7 +2,7 @@ package Circuits.Components;
 
 public class ComponentConnections {
 
-    public class ConnectionPoint{
+    public static class ConnectionPoint{
         public boolean isConnected;
         public Rotation point;
 
@@ -10,6 +10,10 @@ public class ComponentConnections {
         public ConnectionPoint(boolean isConnected, Rotation point){
             this.isConnected = isConnected;
             this.point = point;
+        }
+
+        public ConnectionPoint(){
+            // empty constructor to make Jackson happy?
         }
 
         public void Clear(){
@@ -98,6 +102,10 @@ public class ComponentConnections {
         this.right.isConnected = right;
         this.bot.isConnected = bot;
         this.left.isConnected = left;
+    }
+
+    public ComponentConnections(){
+        //empty or default constructor.. o.o
     }
 
 }

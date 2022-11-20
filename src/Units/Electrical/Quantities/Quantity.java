@@ -23,15 +23,16 @@ public abstract class Quantity implements QuantityInterface {
 
      */
     StandardNum quantity;
-    double Mantissa(){
+
+    double Mantissa() {
         return quantity.mantissa;
     }
-    Magnitude Exponent(){
+
+    Magnitude Exponent() {
         return quantity.exponent;
     }
 
     /**
-     *
      * @return returns the symbol that represents the quantity (suh as W for energy/work)
      */
     @Override
@@ -40,7 +41,6 @@ public abstract class Quantity implements QuantityInterface {
     }
 
     /**
-     *
      * @return returns the symbol of the SI_Unit (such as J for the quantity of energy which is itself represented as W)
      */
     @Override
@@ -49,11 +49,9 @@ public abstract class Quantity implements QuantityInterface {
     }
 
     /**
-     *
      * @return returns the current value of the quantity
      */
-    public double GetValue()
-    {
+    public double GetValue() {
         // returns the full quantity. TODO: decide whether to explicitly multiply out quantities like this or rewrite math methods to perform simpler (less error prone) calculations; e.g. divide 10kV by 7MO: mantissa = 10/7, exp = 10x(3 - 6) [3 for kilo, from which we subtract 6 for mega]
         return quantity.GetValue();
     }
@@ -62,25 +60,27 @@ public abstract class Quantity implements QuantityInterface {
     protected abstract String definition();
 
     /**
-     *
      * @return returns a detailed definition of the given quantity as a string (this is largely for the benefit of the learner)
      */
-    public String GetDefinition(){
+    public String GetDefinition() {
         return Formatting.BeautifyString(definition());
     }
 
     /**
-     *
-     * @param initialValue initialization value of the quantity
+     * @param initialValue     initialization value of the quantity
      * @param initialMagnitude initialization of the magnitude (power of ten, that is, 10^initialMagnitude) value of the quantity
      */
-    public Quantity(double initialValue, Magnitude initialMagnitude){
+    public Quantity(double initialValue, Magnitude initialMagnitude) {
         quantity = new StandardNum(initialValue, initialMagnitude);
     }
 
-    public Quantity(StandardNum value){
+    public Quantity(StandardNum value) {
         quantity = value;
     }
 
+    public Quantity() {
+        //empty constructor to make jackson presumably happy
+    }
 }
+
 

@@ -1,16 +1,6 @@
 package Circuits;
 
 import Circuits.Components.Component;
-import Circuits.Components.Resistor;
-import Circuits.Components.VoltageSource;
-import Units.Electrical.Properties.Current;
-import Units.Electrical.Properties.Resistance;
-import Units.Electrical.Properties.Voltage;
-import Units.Metric.Magnitude;
-
-import java.lang.reflect.Array;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 public class Circuit implements CircuitInterface {
 
