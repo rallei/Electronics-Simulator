@@ -1,5 +1,7 @@
 package Units.Metric;
 
+import java.lang.management.ManagementFactory;
+
 public enum Magnitude {
 
     FEMTO('f',-15),
@@ -29,6 +31,23 @@ public enum Magnitude {
     }
     public int GetPower(){
         return this._powerOfTen;
+    }
+
+    public static Magnitude GetMagnitudeByPower(int power){
+        switch(power){
+            case 12: return Magnitude.TERA;
+            case 9: return Magnitude.GIGA;
+            case 6: return Magnitude.MEGA;
+            case 3: return Magnitude.KILO;
+            case 0: return Magnitude.NONE;
+            case -3: return Magnitude.MILLI;
+            case -6: return Magnitude.MICRO;
+            case -9: return Magnitude.NANO;
+            case -12: return Magnitude.PICO;
+            case -15: return Magnitude.FEMTO;
+        }
+
+        return null; // the disaster case. go on. break my code. >:O
     }
 
     public static Magnitude GetMagnitudeBySymbol(char symbol){

@@ -1,0 +1,2853 @@
+[ [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 2.0,
+      "y" : 2.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 0,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 2.0,
+      "y" : 3.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "voltageRating" : null,
+    "isOn" : true
+  },
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 2.0,
+      "y" : 4.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 2.0,
+      "y" : 5.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 2.0,
+      "y" : 6.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 2.0,
+      "y" : 7.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 3.0,
+      "y" : 1.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 3.0,
+      "y" : 2.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 3.0,
+      "y" : 3.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 3.0,
+      "y" : 4.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 3.0,
+      "y" : 6.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 3.0,
+      "y" : 7.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 3.0,
+      "y" : 8.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 4.0,
+      "y" : 1.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 4.0,
+      "y" : 2.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 4.0,
+      "y" : 3.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 4.0,
+      "y" : 4.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 4.0,
+      "y" : 6.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 4.0,
+      "y" : 7.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 4.0,
+      "y" : 8.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 5.0,
+      "y" : 1.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 5.0,
+      "y" : 2.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 5.0,
+      "y" : 3.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 5.0,
+      "y" : 4.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 5.0,
+      "y" : 6.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 5.0,
+      "y" : 7.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 5.0,
+      "y" : 8.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 3,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 6.0,
+      "y" : 1.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 6.0,
+      "y" : 2.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 6.0,
+      "y" : 3.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 6.0,
+      "y" : 4.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 3,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 6.0,
+      "y" : 6.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 6.0,
+      "y" : 7.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 6.0,
+      "y" : 8.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 7.0,
+      "y" : 1.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 7.0,
+      "y" : 2.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 7.0,
+      "y" : 3.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 7.0,
+      "y" : 4.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 7.0,
+      "y" : 6.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : true,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 7.0,
+      "y" : 7.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 7.0,
+      "y" : 8.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : false,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : false,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 8.0,
+      "y" : 2.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 0,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 8.0,
+      "y" : 3.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 8.0,
+      "y" : 4.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : 0,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 8.0,
+      "y" : 5.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 100.0,
+        "exponent" : "NONE"
+      }
+    }
+  }
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : true,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : false,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : true,
+        "point" : "BOT"
+      }, {
+        "isConnected" : false,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 8.0,
+      "y" : 6.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : {
+    "data" : {
+      "someData" : "data"
+    },
+    "mainPivot" : -1,
+    "connections" : {
+      "top" : {
+        "isConnected" : true,
+        "point" : "TOP"
+      },
+      "right" : {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      },
+      "bot" : {
+        "isConnected" : false,
+        "point" : "BOT"
+      },
+      "left" : {
+        "isConnected" : true,
+        "point" : "LEFT"
+      },
+      "points" : [ {
+        "isConnected" : true,
+        "point" : "TOP"
+      }, {
+        "isConnected" : false,
+        "point" : "RIGHT"
+      }, {
+        "isConnected" : false,
+        "point" : "BOT"
+      }, {
+        "isConnected" : true,
+        "point" : "LEFT"
+      } ]
+    },
+    "position" : {
+      "x" : 8.0,
+      "y" : 7.0
+    },
+    "namedVariable" : "\u0000",
+    "subscript" : 0,
+    "resistance" : {
+      "quantity" : {
+        "mantissa" : 0.0,
+        "exponent" : "NONE"
+      }
+    }
+  },
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ], [ {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+}, {
+  "wireData" : null,
+  "voltageData" : null,
+  "resistorData" : null
+} ] ]

@@ -1,5 +1,19 @@
 package Circuits.Components.Breadboard;
 
+import Circuits.Components.Component;
+import Circuits.Components.*;
+import Circuits.Node;
+import Extensions.HelperMethods.Pathfinding;
+import Extensions.ReschedulableTimer;
+import Units.Metric.Magnitude;
+import Units.Metric.StandardNum;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.annotation.processing.SupportedSourceVersion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -10,19 +24,7 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import Circuits.Circuit;
-import Circuits.Components.*;
-import Circuits.Components.Component;
-import Extensions.ReschedulableTimer;
-import Units.Metric.StandardNum;
-
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import static Extensions.Constants.*;
 
 public class Breadboard {
 
@@ -33,6 +35,7 @@ public class Breadboard {
     private int width = 0;
 
     private BreadboardGridUnit[][] mainGrid;
+    private int[][] visitedArray;
 
     private static Component selectedComponent;
 
@@ -45,7 +48,7 @@ public class Breadboard {
         //TODO: improve this from a rote, crappy switch block when I get a better idea
         if (selectedComponent instanceof Wire) return new Wire();
         if (selectedComponent instanceof VoltageSource) return new VoltageSource(GetComponentValue());
-        if (selectedComponent instanceof Resistor) return new Resistor(GetComponentValue());
+        if (selectedComponent instanceof Resistor) return new Resistor(new StandardNum(100, Magnitude.NONE));
         return null;
     }
 
@@ -87,11 +90,12 @@ public class Breadboard {
 
         panel.setLayout(g);
 
-        for (int i = 0; i < height; i++) {
-            for (int k = 0; k < width; k++) {
+        for (int i = 0; i < width; i++) {
+            for (int k = 0; k < height; k++) {
                 BreadboardGridUnit gridUnit = new BreadboardGridUnit(new Point(i, k));
                 gridUnit.addMouseListener(new ClickListener(gridUnit));
                 panel.add(gridUnit);
+
             }
         }
 
@@ -104,13 +108,11 @@ public class Breadboard {
         public Wire wireData;
         public VoltageSource voltageData;
         public Resistor resistorData;
-        public String componentType;
 
         public ClassedComponent(){
             wireData = null;
             voltageData = null;
             resistorData = null;
-            componentType = null;
         }
 
     }
@@ -209,6 +211,8 @@ public class Breadboard {
         //GetNode(GetComponentAtPoint(startPoint),null,0,null);
         //FindPath(grid, startPoint, null,Rotation.TOP, new Stack<>());
         //SolveCircuit(null, startPoint, initializeVisitedArray(), new LinkedList<Point>());
+        visitedArray = initializeVisitedArray(); // reset the visited array
+        SolveCircuit(startPoint, new LinkedList<>());
     }
 
     public BreadboardGridUnit[][] getGrid() {
@@ -221,6 +225,7 @@ public class Breadboard {
             int x = counter % width;
             int y = counter / width;
             breadboardGridUnits[x][y] = gridUnit;
+            gridUnit.position = new Point(x,y); // set position here...
             if (gridUnit.component != null) {
                 //System.out.println("Found component of type " + gridUnit.component.toString() + " at coordinate (" + x + ", " + y + ").");
 
@@ -270,21 +275,34 @@ public class Breadboard {
      */
 
     // some constants for visited array initialization and checking
-    final int unvisited = -1;
-    final int inaccessible = -2;
+
 
     int[][] initializeVisitedArray() {
-        int[][] visitedArray = new int[mainGrid.length][mainGrid[0].length];
-        for (int i = 0; i < visitedArray.length; i++)
-            for (int j = 0; j < visitedArray[i].length; j++) {
+        int[][] newVisitedArray = new int[mainGrid.length][mainGrid[0].length];
+        for (int i = 0; i < newVisitedArray.length; i++)
+            for (int j = 0; j < newVisitedArray[i].length; j++) {
                 if (mainGrid[i][j].component != null) {
-                    visitedArray[i][j] = unvisited;
+                    newVisitedArray[i][j] = UNVISITED;
                 } else {
-                    visitedArray[i][j] = inaccessible;
+                    newVisitedArray[i][j] = INACCESSIBLE;
 
                 }
             }
-        return visitedArray;
+        return newVisitedArray;
+    }
+
+    int[][] EmptyVisitedClone(){
+        int[][] emptyVisitedClone = new int[mainGrid.length][mainGrid[0].length];
+        for (int i = 0; i < emptyVisitedClone.length; i++)
+            for (int j = 0; j < emptyVisitedClone[i].length; j++) {
+                if (mainGrid[i][j].component != null) {
+                    emptyVisitedClone[i][j] = UNVISITED;
+                } else {
+                    emptyVisitedClone[i][j] = INACCESSIBLE;
+
+                }
+            }
+        return emptyVisitedClone;
     }
 
     void PrintArray(int[][] array) {
@@ -314,25 +332,59 @@ public class Breadboard {
         }
     }
 
-    public void SolveCircuit(Component component) {
+    public void SolveCircuit(Point position, LinkedList<Object> OrderedList) {
         /* It may be that this is simply a refinement of other ideas I have had, but I will still give this method its own space.
          *
          */
 
         // intended to store objects of type component and type node, from which we can grab values such as resistance, etc.
         // the list represents a complete ordering of the circuit
-        LinkedList<Object> OrderedList = new LinkedList<>();
 
-        Component nextComponent = NextInPath(null,null);
+        //LinkedList<Object> OrderedList = new LinkedList<>();
+
+        visitedArray[position.x][position.y] = VISITED;
+
+        Point nextPosition = NextInPath(position,visitedArray);
+        System.out.println(nextPosition);
+
+        if(nextPosition == null){
+            StandardNum totalResistance = new StandardNum();
+            int numNodes = 0;
+            int numResistors = 0;
+            for(Object obj: OrderedList){
+                if(obj instanceof Node) {
+                    Node n = (Node)obj;
+                    System.out.println("We have a node spanning " + n.startJunction + " to " + n.endJunction + " with resistance: " + n.GetResistance().ToString());
+                    totalResistance.Add(n.GetResistance());
+                    numNodes++;
+                    numNodes += n.GetNumNodes();
+                    numResistors += n.GetNumResistors();
+                    System.out.println(n.GetNumResistors());
+                }
+                else if (obj instanceof Resistor){
+                    Resistor r = (Resistor)obj;
+                    System.out.println("We have a " + r.getClass().getSimpleName() + " at " + r.position + " with resistance: " + r.resistance.GetQuantity().ToString());
+                    totalResistance.Add(r.resistance.GetQuantity());
+                    numResistors++;
+                }
+                else if (obj instanceof Component) {
+                    Component c = (Component)obj;
+                    System.out.println("We have a " + c.getClass().getSimpleName() + " at " + c.position);
+                }
+            }
+            UpdateStatus("Number of nodes: " + numNodes + " | Number of resistors: " + numResistors + " | Total resistance: " + totalResistance.ToString());
+            return; // we're done, so let's pack up and head home
+        }
+
+        Component nextComponent = GetComponentAtPoint(nextPosition);
 
         if (IsJunction(nextComponent)) {
 
-            Node nextNode = GetNode();
+            Node nextNode = GetNode(nextPosition,position, null);
 
             if (nextNode != null) {
                 OrderedList.add(nextNode);
-                // set nextComponent to the endpoint of the node we found
-                nextComponent = nextNode.endComponent;
+                nextPosition = nextNode.endJunction; // so I'm not sure if I actually coded this to work properly...
             } else {
                 System.out.println("I hit a junction on the main path, but it wasn't a node... I'm not sure what to do!");
                 return;
@@ -341,24 +393,454 @@ public class Breadboard {
             OrderedList.add(nextComponent);
         }
 
-        //SolveCircuit(NextInPath(nextComponent));
+
+
+        SolveCircuit(nextPosition, OrderedList);
     }
 
-    public Component NextInPath(Point fromPosition, int[][] visited) {
+
+    public Node GetNode(Point position, Point lastPosition, Set<Point> exclusions) {
+
+        /*
+
+         */
+
+        ArrayList<Point> pathStartPoints = ReachablePoints(position,visitedArray);
+        // for each path, we have to travel until we reach one junction, then we test them all
+        // a temporary data structure for paths, perhaps?
+
+        ArrayList<Path> paths = new ArrayList<>();
+
+        for(int i = 0; i < pathStartPoints.size(); i++){
+            paths.add(new Path(GetComponentAtPoint(position),GetComponentAtPoint(pathStartPoints.get(i))));
+        }
+
+        // we need to implement finding the junction common to all paths
+
+        Point endingJunction = GetEndOrCommonJunction(position,lastPosition,paths,exclusions);
+
+        visitedArray[position.x][position.y] = VISITED;
+        //visitedArray[endingJunction.x][endingJunction.y] = VISITED;
+
+        if(exclusions == null)
+            exclusions = new HashSet<Point>();
+
+        exclusions.add(position);
+        exclusions.add(endingJunction);
+
+
+        //leaving this here even though it will essentially do nothing
+        if(paths.size() <= 1)
+            return null; // because a node has multiple paths out
+
+        System.out.println("Trying to find node spanning " + position + " to " + endingJunction + " which has " + paths.size() + " paths.");
+        int counter = 0;
+        while(!PathsConverged(paths,endingJunction)){// && counter < 500){
+            //pick the path which has not yet seen a junction, else pick the path with the fewest steps taken so far
+            Path pathToTravel = null;
+            Point pointTravelledTo = null;
+
+            pathToTravel = NextJunctionPath(paths, endingJunction);
+            if(IsJunction(GetComponentAtPoint(pathToTravel.endPoint()))) {
+                System.out.println("Node start: " + position + " and starting junction found at " + pathToTravel.endPoint());
+                pathToTravel.Add(GetNode(pathToTravel.endPoint(), pathToTravel.startPoint(),exclusions));
+            }
+
+
+            //TODO: see if we *start* at a junction -- the first step on a branch can most certainly be a junction/beginning of a new node!
+            /*
+            while(pathToTravel == null){
+
+                // if it fails getnode, it means we should do it last, because it just connects to this node outlet
+
+                pathToTravel = NextJunctionPath(paths, endingJunction, attempts);
+
+                if(pathToTravel == null){
+                    System.out.println("I've been to at least one junction on each path, but no ending junctions are nodes, which confuses me!.. Time for analysis?");
+                    return null;
+                }
+
+                //int[][] visitedCopy = visitedArray.clone();
+                System.out.println("I must search for a node at " + pathToTravel.endPoint());
+                Node returnValue = GetNode(pointTravelledTo, pathToTravel.endPoint());
+
+                if(returnValue != null) {
+                    //visitedArray = visitedCopy; // might want to directly copy values in, but let's try it this way for now
+                    pathToTravel.nodesAlong++;
+                    pathToTravel.Add(returnValue);
+                }
+                else{
+                    // what do we do if we failed GetNode? head to another path which won't, i guess!
+                    // we use an attempt system. this will make us try getNode on everything
+                    attempts++;
+                }
+            }
+            */
+            //if(toTravel == null)
+            //    toTravel = LeastStepPath(paths);
+
+            // travel along the path
+            // question -- can't we just use recursion once we see that all paths don't converge?
+            // let Pn = path subscript n
+            // if P1.endpoint = J1, P2.endpoint = J2, P3.endpoint = J2, we can GetNode on P1 to see the node in the path
+            // and jump across it, continuing along that path and looking for the next junction after it (which may be J2)
+
+
+            Point previousPoint = pathToTravel.endPoint();
+
+            visitedArray[previousPoint.x][previousPoint.y] = VISITED;
+
+            pointTravelledTo = Travel(pathToTravel,visitedArray);
+            /*
+
+             */
+            pathToTravel.Add(GetComponentAtPoint(pointTravelledTo));
+
+            // if it hits a junction which is not the end junction, it IS a node, for certain
+            if(IsJunction(GetComponentAtPoint(pointTravelledTo))) {
+                if(!pointTravelledTo.equals(endingJunction))
+                {
+                    System.out.println("Ending Junction: " + endingJunction + " | I sense a new node at " + pointTravelledTo);
+                    pathToTravel.Add(GetNode(pointTravelledTo,previousPoint,exclusions));
+                }
+                else{
+                    pathToTravel.junctionsAlong++;
+                }
+                //System.out.println("Adding junction to path at position: " + pointTravelledTo);
+                //System.out.println("Our new end point is " + pathToTravel.endPoint());
+            }
+            counter++;
+        }
+
+        System.out.println("Paths have converged -- node found, spanning " + position + " to " + paths.get(0).endPoint() + ".");
+        return new Node(position,paths);
+    }
+
+    Point Travel(Path path, int[][] visitedArray){
+
+        Point endPoint = path.endPoint();
+
+        if(endPoint == null)
+            endPoint = path.startPoint();
+
+        //if the code breaks, i moved markVisited AFTER this but i think that's okay
+
+        //PrintArray(visitedArray);
+
+        Point pointTravelledTo = NextInPath(endPoint,visitedArray);
+
+        if(pointTravelledTo == null){
+            Point p1 = new Point(endPoint.x - 1,endPoint.y);
+            Point p2 = new Point(endPoint.x,endPoint.y-1);
+            Point p3 = new Point(endPoint.x + 1,endPoint.y);
+            Point p4 = new Point(endPoint.x,endPoint.y+1);
+            System.out.println("Cannot travel, printing VISITED status of surrounding points: \n\nLeft: " + Visited(p1,visitedArray) + " Up: " + Visited(p2,visitedArray) + " Right: " + Visited(p3,visitedArray) + " Down: " + Visited(p4,visitedArray));
+        }
+
+        System.out.println("End point position: " + endPoint + " | Next position: " + pointTravelledTo);
+
+        path.steps++;
+
+        return pointTravelledTo;
+    }
+
+    /*
+    Point Travel(Path path){
+        Point endPoint = path.endPoint();
+
+        if(endPoint == null)
+            endPoint = path.startPoint();
+
+        //if the code breaks, i moved markVisited AFTER this but i think that's okay
+
+        Point nextPosition = NextInPath(endPoint);
+
+        //System.out.println("End point position: " + endPoint + " | Next position: " + nextPosition);
+
+        path.steps++;
+
+        return nextPosition;
+    }
+*/
+    public Path UnseenJunctionPath(ArrayList<Path> paths){
+
+        for(Path p : paths)
+            if(p.junctionsAlong - p.nodesAlong == 0)
+                    return p;
+
+        return null;
+    }
+
+    public Path NextJunctionPath(ArrayList<Path> paths, Point endingJunction){
+
+        int counter = 0;
+        for(Path p : paths) {
+            if (!p.endPoint().equals(endingJunction)) {
+                System.out.println("Next junction path is: " + counter);
+                return p;
+            }
+            counter++;
+        }
+
+        return null;
+    }
+  /*
+    public Path NextJunctionPath(ArrayList<Path> paths, Point endingJunction, int attempts){
+
+        for(Path p : paths)
+            if(attempts == 0 )
+                return p;
+            else
+                attempts--;
+
+        return null;
+    }
+*/
+    public Path LeastJunctionPath(ArrayList<Path> paths){
+
+        Path withFewestJunctions = null;
+
+        for(Path p : paths)
+            if(withFewestJunctions == null || p.junctionsAlong < withFewestJunctions.junctionsAlong)
+                withFewestJunctions = p;
+
+        return withFewestJunctions;
+    }
+
+    public Path LeastStepPath(ArrayList<Path> paths){
+
+        Path withFewestSteps = null;
+
+        for(Path p : paths)
+            if(withFewestSteps == null || p.steps < withFewestSteps.steps)
+                withFewestSteps = p;
+
+        return withFewestSteps;
+    }
+
+    Point GetEndOrCommonJunction(Point nodeStartPosition, Point beforeNodeStart, ArrayList<Path> paths, Set<Point> exclusions){
+
+        System.out.println("Seeking end or common junction... ");
+
+        //int[][] visitedCopy = visitedArray.clone();
+
+        Point endOrCommonJunction = null;
+
+        // now we must add the magic juju
+        //Point junctionToSeek = paths.get(0).startPoint();
+
+        /*
+        while(junctionToSeek == null || !IsJunction(GetComponentAtPoint(junctionToSeek))){
+            junctionToSeek = TravelAndMarkVisited(paths.get(0),visitedCopy);
+        }
+
+         */
+        //System.out.println("Junction to seek is " + junctionToSeek + " paths: " + paths.size());
+        //Point junctionToSeek = GetFirstJunction(paths.get(0), visitedCopy); // here seems like a prime candidate for my backtracking algorithm... we need to adapt it
+
+        int currentPathIndex = 0; // we checked the first path, of course
+
+        Set<Set<Point>> loopPaths = new HashSet<>();
+        //ArrayList<ArrayList<Point>> loopPaths = new ArrayList<>();
+
+        while(currentPathIndex < paths.size()){
+
+            // pick the next path...
+
+            Path toCheck = paths.get(currentPathIndex);
+
+            int[][] visitedClone = EmptyVisitedClone();
+            visitedClone[nodeStartPosition.x][nodeStartPosition.y] = INACCESSIBLE;
+            //visitedClone[beforeNodeStart.x][beforeNodeStart.y] = VISITED;
+            Boolean Verbose = false;
+            Pathfinding pathFinder = new Pathfinding(visitedClone, mainGrid, Verbose);
+
+            // search *backwards*
+            Point pointToSeekFrom = beforeNodeStart;//paths.get(currentPathIndex).endPoint();//(paths.get(currentPathIndex).endPoint() == null) ? paths.get(currentPathIndex).startPoint() : paths.get(currentPathIndex).endPoint();
+            //TODO: pass in breadboardgrid[][] to pathFinder as well, because it needs to use wire connections to determine if travel is possible (not just is the tile adjacent and unvisited)
+
+            if(Verbose) System.out.println("Before node start: " + beforeNodeStart + " | Node start: " + nodeStartPosition);
+            if(Verbose) System.out.println("Point to seek from: " + pointToSeekFrom + ", Point to seek: " + paths.get(currentPathIndex).endPoint() + ".");
+            loopPaths.add(pathFinder.Solve(pointToSeekFrom,paths.get(currentPathIndex).endPoint(), 0, new Stack<>(), new HashSet<>()));
+
+
+            currentPathIndex++;
+
+        }
+
+
+        return GetCommonLoopPoint(loopPaths, exclusions);
+
+    }
+
+    Point GetCommonLoopPoint(Set<Set<Point>> loopPaths, Set<Point> exclusions){
+        // OKAY, we just need to find a point common to all lists, and then we HAVE IT
+        Set<Point> result = null;
+
+        int counter = 0;
+        for(Set<Point> loopPath : loopPaths){
+
+            if(result == null) {
+                result = loopPath;
+                //result.addAll(loopPath);
+            }
+            else {
+                //System.out.println("Iteration: " + counter + " Result null? " + (result == null) + " loop path null? " + (loopPath == null));
+                //System.out.println("Set " + counter + ": ");
+                //for(Point p : loopPath)
+                //    System.out.print(p);
+
+                result.retainAll(loopPath);
+            }
+
+            counter++;
+        }
+
+        if(exclusions != null)
+            result.removeAll(exclusions);
+
+        // print to see what our results are, even though i expect we need to trim the path list down to junctions
+        for(Point p : result)
+        {
+            System.out.println("Common junction between " + loopPaths.size() + " paths: (" + p.x + "," + p.y + ")");
+        }
+
+        // TODO: okay, what we *actually* want is the first junction we saw that was shared
+        if(result.size() > 1)
+        {
+            System.out.println("Hey, I found more than one common end junction... going to return the 'first' result, this may cause issues (if the first result is not the first junction seen that was shared), idk how hashsets work entirely");
+            Point pointToReturn = result.iterator().next();
+
+            System.out.println("Returning " + pointToReturn + "...");
+            return pointToReturn;
+        }
+        else {
+            // there should only be one result
+            return result.iterator().next();
+        }
+    }
+
+
+
+    public class Path{
+        int junctionsAlong = 0;
+        int nodesAlong = 0;
+        int steps = 0; // testing variable to help GetNode choose the path with the least steps
+        public Object startObject(){
+            return OrderedList.get(0);
+        }
+        public Object endObject(){
+            return OrderedList.get(OrderedList.size() - 1);
+        }
+
+        public Point startPoint(){
+            if(startObject() instanceof Component) {
+                return ((Component)startObject()).position;
+            }
+            else
+            if(startObject() instanceof Node){
+                System.out.println("Chief, I don't know what to do with a node right now.");
+            }
+
+            return null;
+        }
+
+        public Point endPoint(){
+
+            if(OrderedList.size() <= 1)
+                return null; // with only one object in the path, there is no real end point because start will == end
+
+            if(endObject() instanceof Component) {
+                return ((Component)endObject()).position;
+            }
+            else
+            if(endObject() instanceof Node){
+                System.out.println("Chief, I may not know what to do with a node right now.");
+                return ((Node)endObject()).endJunction;
+            }
+
+            return null;
+        }
+
+        public void Add(Object objectInPath){
+            OrderedList.add(objectInPath);
+        }
+
+        public int GetNumResistors(){
+            int numResistors = 0;
+            for(Object obj : OrderedList){
+                if (obj instanceof Resistor){
+                    numResistors++;
+                } else if (obj instanceof Node) {
+                    numResistors += ((Node)obj).GetNumResistors();
+                }
+            }
+            return numResistors;
+        }
+
+        public int GetNumNodes(){
+            int numNodes = 0;
+            for(Object obj : OrderedList){
+                if(obj instanceof Node){
+                    numNodes++;
+                    numNodes += ((Node)obj).GetNumNodes();
+                }
+            }
+            return numNodes;
+        }
+
+        public StandardNum GetResistance(){
+            StandardNum returnValue = new StandardNum();
+
+            for(Object obj : OrderedList) {
+                if (obj instanceof Resistor) {
+                    //System.out.println(((Resistor)obj).resistance.GetQuantity().ToString());
+                    returnValue.Add(((Resistor) obj).resistance.GetQuantity());
+                } else
+                if (obj instanceof Node) {
+                    returnValue.Add(((Node) obj).GetResistance());
+                }
+            }
+
+            //System.out.println("Returning path resistance of " + returnValue.ToString());
+            //System.out.println(returnValue.exponent);
+            return returnValue;
+        }
+
+        private ArrayList<Object> OrderedList = new ArrayList<>();
+
+        public Path(Component startComponent, Component firstStepComponent){
+            OrderedList.add(startComponent);
+            OrderedList.add(firstStepComponent);
+        }
+    }
+
+    public Boolean PathsConverged(ArrayList<Path> paths, Point commonEndPoint){
+
+        //Point commonEndPoint = paths.get(0).endPoint();
+
+        for(Path p : paths){
+            //System.out.println("Common end point: " + commonEndPoint + " | evaluated end point: " + p.endPoint());
+            if(p.endPoint() == null || !p.endPoint().equals(commonEndPoint)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public Point NextInPath(Point fromPosition, int[][] visited) {
         // code to determine what comes next in the path
         // get all points within reach of the current position
         ArrayList<Point> reachablePoints = ReachablePoints(fromPosition, visited);
 
         //reachablePoints.get(0)
-        return GetComponentAtPoint(reachablePoints.get(0));
+        if(reachablePoints.size() > 0)
+            return reachablePoints.get(0);
+        else
+            return null;
     }
 
-
-    public Node GetNode() {
-
-
-        return null;
-    }
 
     public void SolveCircuit2(Point lastPosition, Point currentPosition, int[][]visited, Queue<Point> queue){
         /*
@@ -372,7 +854,7 @@ public class Breadboard {
 
         if(currentPosition == null){
             System.out.println("Must be finished..!");
-            PrintArray(visited);
+            //PrintArray(visited);
             return;
         }
 
@@ -437,6 +919,8 @@ public class Breadboard {
         for(Point p : adjacentPoints){
             if(!Visited(p,visitedArray) && CanReach(currentPosition,p))
                 reachables.add(p);
+            //if(Visited(p,visitedArray) && CanReach(currentPosition,p))
+              //  System.out.println("You know, I would love to go to (" + p.x + "," + p.y + ")... but that stuff is visited, my mans.");
         }
 
         return reachables;
@@ -466,6 +950,7 @@ public class Breadboard {
     }
 
 
+    /*
     class Node{
         //class may be moved in future, being used here to test new pathfinding idea
         Component startComponent; // junction where the node begins
@@ -474,11 +959,6 @@ public class Breadboard {
         // some kind of way to store what's in between start and end...
         // in C# I'd say a list of Object, where it can be comp-> comp -> comp -> Node -> comp, comp... etc.
         // but there can be more than one path, really up to three (one in, three out)
-        ArrayList<Object> pathUp = new ArrayList<>();
-        ArrayList<Object> pathRight = new ArrayList<>();
-        ArrayList<Object> pathDown = new ArrayList<>();
-        ArrayList<Object> pathLeft = new ArrayList<>();
-
         public void AddPath(Rotation r, ArrayList<Object> path){
             switch(r.GetDirection(r.GetValue())){
                 case TOP: pathUp = path;
@@ -500,7 +980,7 @@ public class Breadboard {
             startComponent = startingComponent;
         }
     }
-
+*/
     /*
     public Node GetNode(Component startComponent, Component currentComponent, int junctionsSeen, Node node){
         // simply going to use a component.
@@ -702,7 +1182,11 @@ public class Breadboard {
         private static int size = 20;
         private Color backgroundColor;
 
+
         private Circuits.Components.Component component;
+
+        // encapsulation + accessor for pathfinding (and any other future script)
+        public Component GetCurrentComponent(){ return component; }
         private JLabel imageLabel;
 
         private BufferedImage currentImage;
@@ -716,6 +1200,7 @@ public class Breadboard {
                 SetImage(component.GetImage());
             }
         }
+
 
         public void ImagineComponent(Circuits.Components.Component c, Rotation rotation){
             if(c == null)
@@ -746,8 +1231,13 @@ public class Breadboard {
             }
 
             component.PlaceComponent(rotation, position, () -> {
-                UpdateStatus("Successfully placed component!");
+                UpdateStatus("Successfully placed component at " + position + "!");
                 SetImage(component.GetImage());
+
+                // temporary check: if resistor, see if it has an associated resistance value
+                if(component instanceof Resistor){
+                    System.out.println("Added component of type Resistor with resistance value of " + ((Resistor)component).resistance.GetQuantity().ToString());
+                }
             }, () -> {
                 UpdateStatus("Failed to place component.");
             });

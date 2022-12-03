@@ -27,7 +27,7 @@ public class Math {
      * @return I*R, because V = I*R; returns the amount of voltage in Volts
      */
     public static double GetVoltage(Resistance R, Current I){
-        return I.GetValue() * R.GetValue();
+        return I.GetQuantity().GetValue() * R.GetQuantity().GetValue();
     }
 
 
@@ -38,7 +38,7 @@ public class Math {
      * @return W/Q, because V = W/Q; returns the amount of voltage in Volts
      */
     public static double GetVoltage(Energy W, Charge Q){
-        return W.GetValue() / Q.GetValue();
+        return W.GetQuantity().GetValue() / Q.GetQuantity().GetValue();
     }
 
     //endregion
@@ -50,7 +50,7 @@ public class Math {
      * @return V/I because R = V/I; returns the amount of resistance in Ohms
      */
     public static double GetResistance(Voltage V, Current I){
-        return V.GetValue() / I.GetValue();
+        return V.GetQuantity().GetValue() / I.GetQuantity().GetValue();
     }
 
     //endregion
@@ -64,7 +64,7 @@ public class Math {
      * @return 1/R, because G = 1/R; Conductance is the reciprocal of Resistance; returns the amount of conductance in Siemens
      */
     public static double GetConductance(Resistance R){
-        return 1/R.GetValue();
+        return 1/R.GetQuantity().GetValue();
     }
     //endregion
 
@@ -72,7 +72,7 @@ public class Math {
 
     //I = V/R
     public static double GetCurrent(Resistance R, Voltage V){
-        return V.GetValue() / R.GetValue();
+        return V.GetQuantity().GetValue() / R.GetQuantity().GetValue();
     }
 
     // I = Q/t -- the current is equal to the number of coulombs flowing through a cross sectional area in material divided by time in seconds
@@ -82,7 +82,7 @@ public class Math {
      * @return Q/t, because I = Q/t; returns the amount of current in Amps
      */
     public static double GetCurrent(Charge Q, Time t){
-        return Q.GetValue() / t.GetValue();
+        return Q.GetQuantity().GetValue() / t.GetQuantity().GetValue();
     }
 
     // P = W/t -- the power is equal to the amount of energy divided by time in seconds, measured in watts
@@ -92,7 +92,7 @@ public class Math {
      * @return W/t, because P = W/t; returns the amount of power in Watts
      */
     public static double GetPower(Energy W, Time t){
-        return W.GetValue() / t.GetValue();
+        return W.GetQuantity().GetValue() / t.GetQuantity().GetValue();
     }
 
 

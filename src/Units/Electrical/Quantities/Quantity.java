@@ -51,9 +51,9 @@ public abstract class Quantity implements QuantityInterface {
     /**
      * @return returns the current value of the quantity
      */
-    public double GetValue() {
+    public StandardNum GetQuantity() {
         // returns the full quantity. TODO: decide whether to explicitly multiply out quantities like this or rewrite math methods to perform simpler (less error prone) calculations; e.g. divide 10kV by 7MO: mantissa = 10/7, exp = 10x(3 - 6) [3 for kilo, from which we subtract 6 for mega]
-        return quantity.GetValue();
+        return quantity;
     }
 
 
@@ -75,7 +75,9 @@ public abstract class Quantity implements QuantityInterface {
     }
 
     public Quantity(StandardNum value) {
+
         quantity = value;
+
     }
 
     public Quantity() {
